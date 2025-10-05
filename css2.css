@@ -1,0 +1,157 @@
+<style>
+  header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  background: transparent;
+  padding: 10px 20px;
+}
+
+/* zone logo + nom (optionnel) */
+.header-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 18px;
+}
+
+.menumilieu {
+    width: calc(100% - 40px);
+    display: flex;
+    justify-content:center;
+    background-color: rgb(226, 156, 191);
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    
+}
+.menumilieu ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 28px;         /* espace entre items */
+    flex-wrap: nowrap; /* interdit de passer sur 2 lignes */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    justify-content: center;
+    overflow: visible;
+}
+
+.menumilieu ul li{
+    position: relative;
+    white-space: nowrap; /* empêche le contenu de se couper */
+}
+
+.menumilieu a{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid transparent;
+    font-size: 16px;
+    line-height: 1;       /* évite que ça “grimpe” sur deux lignes */
+}
+
+.menumilieu a:hover{
+    color: red;
+    border-bottom: 2px solid gold;
+
+}
+.icone-maison {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+.menuderoulant{
+    position: absolute;
+    top: 100%;     /* sous l'élément parent avec un petit gap */
+    left: 0;
+    display: none;        /* caché par défaut */
+    min-width: 160px;     /* largeur mini pour ne pas casser */
+    white-space: nowrap;  /* les items restent sur une ligne */
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0,0,0,.12);
+    border-radius: 8px;
+    padding: 6px 0;
+    z-index: 1000;
+    padding-top: 4px;
+}
+.menumilieu ul li:hover > .menuderoulant{ /* Il sert à cibler un sous menu 'menuderoulant' lorsqu’un utilisateur passe sa souris sur un éléments li de la liste représentant notre menu principal.*/
+    display:block;
+}
+
+.menumilieu ul li:not(:hover) > .menuderoulant {
+    display: none;
+}
+
+.menuderoulant li{ 
+    list-style: none;
+}
+.menuderoulant a{
+    display: block;
+    padding: 8px 14px;
+    text-decoration: none;
+    color: #111;
+}
+.menuderoulant a:hover{
+    background-color: RGBa(0,0,0,0.06);
+</style
+}
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* Effet zoom léger sur l’image */
+.card:hover img {
+  transform: scale(1.1);
+}
+
+/* Overlay caché au départ */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Quand on survole la vignette */
+.card:hover .overlay {
+  opacity: 1;
+}
